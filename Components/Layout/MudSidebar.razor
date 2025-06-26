@@ -1,0 +1,46 @@
+﻿<MudAppBar Elevation="1">
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggle" />
+    <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
+    <MudIconButton Color="Color.Inherit" Icon="@Icons.Material.Filled.Settings" OnClick="@ToggleSettings" />
+</MudAppBar>
+
+<MudDrawer id="nav-drawer"
+           @bind-Open="_drawerOpen"
+           ClipMode="DrawerClipMode.Never"
+           Elevation="2"
+           Variant="@DrawerVariant.Temporary"
+           Style="position:fixed;">
+    <MudNavMenu>
+        <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+        <MudNavLink Href="home2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+
+    </MudNavMenu>
+</MudDrawer>
+
+<MudDrawer @bind-Open="@_settingsOpen" Overlay="true"
+           OverlayAutoClose="true"
+           Fixed="true"
+           ClipMode="DrawerClipMode.Never"
+           Variant="@DrawerVariant.Temporary"
+           Anchor="Anchor.End"
+           Style="position:fixed;"
+           Elevation="1">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">Settings</MudText>
+    </MudDrawerHeader>
+</MudDrawer>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _settingsOpen = false;
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    private void ToggleSettings()
+    {
+        _settingsOpen = !_settingsOpen;
+    }
+}
